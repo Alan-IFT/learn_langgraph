@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "learn-langgraph"
+version = "0.1.0"
+description = ""
+authors = ["yangxuangui-dev <yangxuangui@tanyue.cc>"]
+readme = "README.md"
+packages = [{include = "learn_langgraph"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+langgraph = "^0.2.70"
+langchain-anthropic = "^0.3.7"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
