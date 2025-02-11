@@ -2,14 +2,16 @@
 name = "learn-langgraph"
 version = "0.1.0"
 description = ""
-authors = ["yangxuangui-dev <yangxuangui@tanyue.cc>"]
+authors = ["alan <yangxuangui1117@gmail.com>"]
 readme = "README.md"
-packages = [{include = "learn_langgraph"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
 langgraph = "^0.2.70"
-langchain-anthropic = "^0.3.7"
+langchain-deepseek = "^0.1.1"
+langchain-core = "^0.3.34"
+python-dotenv = "^1.0.1"
+pytest = "^8.3.4"
 
 
 [build-system]
