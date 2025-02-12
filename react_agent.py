@@ -20,7 +20,6 @@ if os.getenv("LANGSMITH_API_KEY") and os.getenv("LANGSMITH_TRACING"):
 else:
     print("⚠️ 提示: 设置 LANGSMITH_API_KEY 和 LANGSMITH_TRACING=true 以启用追踪功能")
 
-
 # Define the tools for the agent to use
 @tool
 def search(query: str):
@@ -33,46 +32,47 @@ def search(query: str):
     print(f"📊 搜索结果: {result}")
     return result
 
-
 def main():
     print("\n🚀 初始化代理系统...")
-
+    
     # 设置工具
     tools = [search]
     print(f"⚙️ 已加载工具: {[tool.name for tool in tools]}")
-
+    
     # 使用 OpenAI 模型
-    model = ChatOpenAI(model="o3-mini-2025-01-31", temperature=0)
+    model = ChatOpenAI(
+        model="gpt-4-turbo-preview",
+        temperature=0
+    )
     print("🤖 已初始化 GPT-4 模型")
-
+    
     # 初始化内存
     checkpointer = MemorySaver()
     print("💾 已初始化内存系统")
-
+    
     # 创建代理应用
     app = create_react_agent(model, tools, checkpointer=checkpointer)
     print("✨ 代理应用创建完成")
-
+    
     # 测试代理
     print("\n🌟 开始第一次对话...")
     final_state = app.invoke(
         {"messages": [{"role": "user", "content": "what is the weather in sf"}]},
-        config={"configurable": {"thread_id": 42}},
+        config={"configurable": {"thread_id": 42}}
     )
     print("\n🤖 代理回复:")
     print(final_state["messages"][-1].content)
-
+    
     # 测试持久化状态
     print("\n🌟 开始第二次对话...")
     final_state = app.invoke(
         {"messages": [{"role": "user", "content": "what about ny"}]},
-        config={"configurable": {"thread_id": 42}},
+        config={"configurable": {"thread_id": 42}}
     )
     print("\n🤖 代理回复:")
     print(final_state["messages"][-1].content)
-
+    
     print("\n✅ 演示完成!")
-
 
 if __name__ == "__main__":
     main()

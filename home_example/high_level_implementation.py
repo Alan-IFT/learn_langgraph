@@ -14,7 +14,7 @@ def search(query:str):
     return "It's 90 degree and sunny"
 
 tools=[search]
-model=ChatOpenAI(model="gpt-4-turbo-preview",temperature=0)
+model=ChatOpenAI(model="o3-mini",temperature=0)
 
 # 初始化内存以在图形运行之间持久化状态
 checkpointer=MemorySaver()
