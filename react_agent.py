@@ -41,7 +41,7 @@ def main():
     
     # 使用 OpenAI 模型
     model = ChatOpenAI(
-        model="gpt-4-turbo-preview",
+        model="o3-mini",
         temperature=0
     )
     print("🤖 已初始化 GPT-4 模型")

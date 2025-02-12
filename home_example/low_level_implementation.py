@@ -19,7 +19,7 @@ tools=[search]
 
 tool_node=ToolNode(tools)
 
-model=ChatOpenAI(model="gpt-4-turbo-preview",temperature=0).bind_tools(tools)
+model=ChatOpenAI(model="o3-mini",temperature=0).bind_tools(tools)
 
 # 定义决定是否继续的函数
 def should_continue(state:MessagesState) -> Literal["tools",END]:
